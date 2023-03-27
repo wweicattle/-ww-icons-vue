@@ -1,0 +1,63 @@
+
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select,figure,figcaption{ margin:0; padding:0;}
+
+/* h1,h2,h3,h4,h5,h6,b,strong{ font-size: 100%; font-weight: normal;} */
+
+i,em{ font-style: normal;}
+
+li{ list-style: none;}
+
+a{ color: #333; text-decoration: none;}
+
+body,html{ font: 14px "微软雅黑",Arial; color: #333;
+}
+
+input{ outline: none;}
+
+.clearfix{ *zoom:1;}
+
+.clearfix:after{ content: ''; display:block; height: 0; overflow: hidden; clear: both;}
+
+html,body{
+  margin: 0;
+  /* overflow: hidden; */
+  width: 100%;
+  height: 100%;
+  user-select: none;
+}
+img {
+  object-fit: cover;
+}
+ul{
+  padding: 0;
+  outline: none;
+  margin: 0;
+}
+li{
+  list-style: none;
+}
+/* 解决 tailwind 预设 img block，antd无预设导致样式冲突，回归默认display */
+img {
+  display: inline;
+}
+input{
+  outline: none;
+  border: none;
+}
+.align-item{
+  display: flex;
+  align-items: center;
+}
+.space-between{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+:root{
+  --primary:#20F88D;
+  --background-linear:linear-gradient(59deg, #20F88D 0%, #0EEFD3 100%);
+  --fontColor:#000
+}
+

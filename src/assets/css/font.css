@@ -1,0 +1,7 @@
+@font-face {
+	/* font-family: 'icons'; */
+	src: url(./font/TsangerYuYangT_W01_W01.ttf);
+}
+html,body{
+  font-family: icons;
+}

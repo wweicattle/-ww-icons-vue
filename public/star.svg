@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="15px" viewBox="0 0 14 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 10</title>
+    <defs>
+        <linearGradient x1="10.5284657%" y1="50%" x2="100%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#FFE872" offset="0%"></stop>
+            <stop stop-color="#FFCC3F" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="画板备份" transform="translate(-1175.000000, -18.000000)" fill="url(#linearGradient-1)">
+            <g id="编组-4" transform="translate(1330.000000, 43.335786) scale(-1, 1) translate(-1330.000000, -43.335786) translate(1132.000000, 18.671573)">
+                <g id="编组-10" transform="translate(339.828953, 0.000000)">
+                    <polygon id="星形" transform="translate(5.662808, 5.662808) rotate(-315.000000) translate(-5.662808, -5.662808) " points="5.66280773 8.23578125 1.65859798 9.66701748 3.08983421 5.66280773 1.65859798 1.65859798 5.66280773 3.08983421 9.66701748 1.65859798 8.23578125 5.66280773 9.66701748 9.66701748"></polygon>
+                    <polygon id="星形备份" transform="translate(10.167544, 11.168596) rotate(-315.000000) translate(-10.167544, -11.168596) " points="10.1675437 12.4427279 8.16543882 13.170701 8.89341196 11.1685961 8.16543882 9.16649126 10.1675437 9.89446439 12.1696486 9.16649126 11.4416754 11.1685961 12.1696486 13.170701"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

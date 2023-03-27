@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "declaration": true,
+    "baseUrl": ".",
+    // "declarationDir": "./src/",
+    "strict": true,
+    "resolveJsonModule": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "target": "ES2018",
+    "sourceMap": true,
+    "lib": ["ES2018", "DOM"],
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "types": [],
+    "allowJs":true,
+    "paths": {
+      "@/*": ["*", "src/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
