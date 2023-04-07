@@ -25,6 +25,7 @@ const iconShowVisbility = ref<boolean>(false)
 <style lang="less" scoped>
 .icons_contain {
   flex: 1;
-  margin: 0 0 0 40px;
+  padding:0  40px;
+  // margin: 0 0 0 40px;
 }
 </style>

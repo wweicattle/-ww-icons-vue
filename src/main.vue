@@ -3,35 +3,21 @@ import { ref } from "vue";
 import Header from "@/views/Header/index.vue"
 import Icons from "@/views/ICONS/Icons.vue"
 import Search from "@/views/Search/index.vue"
-import 'element-plus/dist/index.css'
+import LeftMenu from "@/views/LeftMenu/index.vue"
 
 const activeMenuIndex = ref<Number>(0)
 
-const test = ref<any>(null)
-const change = () => {
-  console.log(test.value);
-  if (test.value) {
-    test.value.style = 'transform: translate(0%, 0%)'
-  }
-}
 </script>
 <template>
   <div class="icon-contain">
     <!-- <span class="tests" ref="test">test33</span> -->
-    <div class="icon_header" @click="change">
+    <div class="icon_header">
       <Header />
     </div>
     <div class="icon_content">
       <Search />
       <div class="icon-items_contain">
-        <div class="left-menu_icon">
-          <template v-for="(val, index) in ['基础', '办公', '电商', '美妆', '教育', '交通',]">
-            <div @click='activeMenuIndex = index' :class="{ active_css: activeMenuIndex == index ? true : false }"><span
-                class="text_item"> {{ val
-                }}</span>
-            </div>
-          </template>
-        </div>
+        <left-menu />
         <Icons class="icons_contains clear_scroll" />
       </div>
     </div>
@@ -53,6 +39,7 @@ const change = () => {
   display: flex;
   flex-direction: column;
   position: relative;
+
   // transition: all 0.3s;
   .tests {
     width: 100%;
@@ -62,10 +49,11 @@ const change = () => {
     top: 0;
     background: var(--fontColor);
     // opacity: .2;
-    transform: translate(100%,0);
+    transform: translate(100%, 0);
     transition: all 0.5s;
   }
-  .icon_header{
+
+  .icon_header {
     position: relative;
     z-index: 10;
   }

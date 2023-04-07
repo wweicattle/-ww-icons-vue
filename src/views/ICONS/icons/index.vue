@@ -1,20 +1,22 @@
 
 <template>
   <div>
-    <template v-for="(val, index) in categories">
+    <template v-for="(val, index, num) in newIcons">
       <div class="items_css">
-        <div class="item_name align-item" @click="showDetailIcons(index)">
-          {{ val.name }}({{ val.icons?.length || 0 }})
-          <CaretBottom width="14px" v-if="!expandStatus[index]"/>
+        <div class="item_name align-item" @click="showDetailIcons(num)">
+          {{ index }}
+          {{ typeIconsNum(val) }}
+          <CaretBottom width="14px" v-if="!expandStatus[num]" />
           <CaretTop width="14px" v-else />
         </div>
-        <div class="icons_content" v-show="expandStatus[index]">
-          <template v-for="res in val.icons">
-            <div class="icon_items align-item" @click="expandIconsDetail(res)">
-              <component :is="markRaw(res)"></component>
+        <div class="icons_content" v-show="expandStatus[num]">
+          <template v-for="res in val">
+            <div class="icon_items align-item" @click="expandIconsDetail(res.component)"
+              v-if="res.type == useIcons.selectIconType">
+              <component :is="markRaw(res.component)"></component>
               <div class="item_spe_name" v-show="useModels.model != 'right'">
-                <div>中文名</div>
-                <div>{{ res.__name }}</div>
+                <div>{{ res.name }}</div>
+                <div>{{ res.engliashName }}</div>
               </div>
             </div>
           </template>
@@ -25,41 +27,43 @@
 </template>
 
 <script setup lang="ts">
-
-import { icons as Icons } from "@wwcattlewei/icons-vue"
-import { CaretBottom, CaretTop } from "@wwcattlewei/icons-vue";
-import IconCategories from '@/utils/icons-categories.json'
-import IconCategorie from '@/utils/demo.json'
-
-import { ref, shallowRef, markRaw } from "vue";
-
+import { ref, shallowRef, computed, toRaw, watch, markRaw, onBeforeMount } from "vue";
+// import iconData from "@/utils/demo"
 import { useModel } from "@/store/model"
+import { useUserStore } from "@/store/index"
 
-console.log(Icons);
 
+// const { icons }: Record<string, any> = WwIcons
 const useModels = useModel()
-const iconMap = new Map(Object.entries(Icons))
-const categories = shallowRef<any>([])
-const expandStatus = ref<Array<any>>([])
+const useIcons = useUserStore()
+console.log(toRaw(useIcons.iconData));
 
-IconCategories.categories.forEach((o: any) => {
-  const result: any = {
-    name: o.name,
-    icons: [],
-  }
-  o.items.forEach((i: any) => {
-    const icon: any = iconMap.get(i)
-    if (icon) {
-      result.icons.push(icon)
-      iconMap.delete(i)
-    }
-  })
-  categories.value.push(result)
+console.log(111, toRaw(useIcons.iconData));
+const newIcons =computed(() => {
+  return useIcons.iconData
 })
-console.log(categories.value);
 
+// console.log(newIcons.value);
+
+const typeIconsNum = (val: Record<string, any>) => {
+  let iconNums = 0
+  iconNums += val.reduce((acc: number, val: Record<string, any>) => {
+    if (val.type == useIcons.selectIconType) {
+      acc += 1
+      return acc
+    } else {
+      return acc
+    }
+  }, 0)
+  return iconNums
+  // return useIcons.iconData.filter((val: any) => { return val.type == useIcons.selectIconType }).length || 0
+}
+const expandStatus = ref<Array<any>>([])
 const emits = defineEmits(['update:visble', 'selecIcon'])
-const props = defineProps({
+
+// 处理图标分类 
+const sortIconsData = shallowRef<Record<string, any>>({})
+defineProps({
   visble: {
     type: Boolean,
     default: false
@@ -78,6 +82,42 @@ const expandIconsDetail = (val: Record<string, any>) => {
 const showDetailIcons = (index: number) => {
   expandStatus.value[index] = !Boolean(expandStatus.value[index])
 }
+
+
+
+// 初始化图标 存入store
+const dealSortIcons = () => {
+  // iconData.map(val => {
+  //   if (!sortIconsData.value[val.categories]) {
+  //     sortIconsData.value[val.categories] = []
+  //     val.component = icons[val.iconName]
+  //     sortIconsData.value[val.categories].push(val)
+  //   } else {
+  //     val.component = icons[val.iconName]
+  //     sortIconsData.value[val.categories].push(val)
+  //   }
+  // })
+  // 进行存储状态中
+  // console.log(sortIconsData.value);
+  // useIcons.setIconData({ ...sortIconsData.value })
+}
+
+
+watch(() => useIcons.iconData, (newVal) => {
+  console.log();
+
+  // 进行 获取修改的图标时,需要进行解除响应式
+  // for (const key in newVal) {
+  //   newVal[key].forEach((val: Array<any>, index: number) => {
+  //     newVal[key][index] = toRaw(val)
+  //   })
+  // }
+  // sortIconsData.value = newVal
+})
+
+onBeforeMount(() => {
+  // dealSortIcons()
+})
 
 
 </script>
@@ -99,9 +139,18 @@ const showDetailIcons = (index: number) => {
       font-size: 20px;
       // width: 120px;
       border: 1px solid var(--border);
-      margin: 0 10px 16px 10px;
+      // margin: 0 10px 16px 10px;
       text-align: center;
-      padding: 10px 10px;
+      padding: 10px;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      // width: calc((100% - 120px) / 9);
+      // margin-right: calc(120px / 8);
+      margin-right: 10px;
+
+      &:last-child {
+        // margin-right: 0;
+      }
 
       svg {
         width: 30px;
@@ -120,6 +169,7 @@ const showDetailIcons = (index: number) => {
       }
 
       .item_spe_name {
+        flex: 1;
         width: 120px;
         font-size: 12px;
         white-space: nowrap;
@@ -128,6 +178,10 @@ const showDetailIcons = (index: number) => {
 
 
     }
+
+    // .icon_items:nth-child(9n) {
+    //   margin-right: 0;
+    // }
   }
 
 

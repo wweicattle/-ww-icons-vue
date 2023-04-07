@@ -16,8 +16,7 @@
 import { watch, computed, ref } from "vue"
 import { useUserStore } from '@/store'
 import computeCodeName from "./utils/computedCodeStr"
-import { Download ,Close} from "@wwcattlewei/icons-vue";
-
+// import { Close,Download} from "@wwcattlewei/icons-vue";
 const store = useUserStore()
 
 const emits = defineEmits(['changeVis'])

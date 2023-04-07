@@ -14,10 +14,9 @@
 
 <script setup lang="ts">
 import { reactive } from "vue";
-import { RefreshRight, Promotion } from '@wwcattlewei/icons-vue';
+import {RefreshRight,Promotion} from "@wwcattlewei/icons-vue"
 import toolItem from "./utils/util"
 import { useUserStore } from '@/store'
-
 const store = useUserStore()
 
 interface toolOpe {

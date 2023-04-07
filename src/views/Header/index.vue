@@ -47,36 +47,16 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from "vue";
-
+import { ref } from "vue";
+import mdStr from "./demo.md?raw"
 import { useTheme } from "@/store/theme"
-import { QuestionFilled } from "@wwcattlewei/icons-vue";
-
-
 import { marked } from "marked";
-
 import hljs from "highlight.js"
-// import 'highlight.js/styles/idea.css'
-// import "highlight.js/styles/monokai-sublime.css";
-// import 'highlight.js/styles/night-owl.css'
-// import 'highlight.js/styles/tokyo-night-dark.css'
-
-
-import ass from "./demo.md?raw"
-console.log(ass);
-
+// const hljs={}
 const theme = useTheme()
-
-
-const activeMenuIndex = ref<Number>(4)
-
+const activeMenuIndex = ref<Number>(0)
 const changeTheme = () => {
   theme.editTheme()
-}
-
-const showCodeBtn = () => {
-  console.log(323);
-
 }
 
 var rendererMD = new marked.Renderer();
@@ -95,17 +75,7 @@ marked.setOptions({
   smartypants: false,
   xhtml: false
 })
-
-const as = ""
-const str = ref(as)
-console.log(str.value);
-
-const compiledMarkdown = ref(marked.parse(ass))
-
-watch(str, (newVal) => {
-  compiledMarkdown.value = marked.parse(newVal)
-
-})
+const compiledMarkdown = ref(marked.parse(mdStr))
 </script>
 <style lang="less">
 .context {
@@ -122,6 +92,7 @@ watch(str, (newVal) => {
         border-left: none;
         border-right: none;
       }
+
       td,
       th {
         padding: 6px 0 6px 8px;
@@ -231,7 +202,8 @@ watch(str, (newVal) => {
         .install_ {
           width: 100%;
           overflow: hidden;
-          .install_code{
+
+          .install_code {
             flex: 1;
             overflow: hidden;
           }
@@ -266,4 +238,5 @@ watch(str, (newVal) => {
       opacity: .7;
     }
   }
-}</style>
+}
+</style>
