@@ -1,4 +1,4 @@
-ame: pages
+name: pages
 
 # 在 main 分支被推送代码时触发 actions
 on:
