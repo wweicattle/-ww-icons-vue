@@ -24,4 +24,4 @@ declare module "@kangc/v-md-editor"
 declare module "prismjs"
 declare module "@kangc/v-md-editor/lib/theme/vuepress.js"
 declare module "marked"
-declare module '@wwcattlewei/icons-vue'
+// declare module '@wwcattlewei/icons-vue' 

@@ -4,9 +4,7 @@ import Header from "@/views/Header/index.vue"
 import Icons from "@/views/ICONS/Icons.vue"
 import Search from "@/views/Search/index.vue"
 import LeftMenu from "@/views/LeftMenu/index.vue"
-
 const activeMenuIndex = ref<Number>(0)
-
 </script>
 <template>
   <div class="icon-contain">

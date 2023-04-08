@@ -863,10 +863,10 @@
     npm "^9.6.2"
     svgo "^3.0.2"
 
-"@wwcattlewei/icons-vue@^2.0.21":
-  version "2.0.21"
-  resolved "https://registry.npmjs.org/@wwcattlewei/icons-vue/-/icons-vue-2.0.21.tgz#1ce5c5789a3c41ad1a8571b452e1ab8d59fb57eb"
-  integrity sha512-HtYwpNZKWTko9JKvQz+rwDPvOPl2C8xVi6TssIY0oTch8ParoTlve1Nnt2/P7DDQ8gRctsR82+lokcWKaxlrpQ==
+"@wwcattlewei/icons-vue@^2.0.22":
+  version "2.0.22"
+  resolved "https://registry.npmjs.org/@wwcattlewei/icons-vue/-/icons-vue-2.0.22.tgz#8aac236564e1631b80fd828e6fc1499f89e99193"
+  integrity sha512-9Y8/VgXMtD1gYUXqb7RPpfkUCz7d3+dcrQdFT49dM3Q9Qm6okpTyujiGs3F3jmpmjYpku50OorY4z2CWw/Mysg==
   dependencies:
     "@pnpm/logger" "^5.0.0"
     "@wwcattlewei/icons-vue" "^1.1.4"

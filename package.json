@@ -10,7 +10,7 @@
     "build:types": "vue-tsc --declaration --emitDeclarationOnly"
   },
   "dependencies": {
-    "@wwcattlewei/icons-vue": "^2.0.21",
+    "@wwcattlewei/icons-vue": "^2.0.22",
     "esbuild-vue": "^1.2.2",
     "highlight.js": "^11.7.0",
     "markdown-it": "^13.0.1",

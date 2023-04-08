@@ -1,0 +1,59 @@
+ame: pages
+
+# 在 main 分支被推送代码时触发 actions
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 检出仓库代码
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # 安装 node.js 环境
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: latest
+      # 安装 yarn
+      - name: Setup yarn
+        uses: yarn/action-setup@v2
+        with:
+          version: latest
+          run_install: false
+      
+      # 检查和设置 yarn 缓存
+      - name: Get yarn store directory
+        id: yarn-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(yarn store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup yarn cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.yarn-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-yarn-store-${{ hashFiles('**/yarn-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-store-
+      
+      # 安装项目依赖
+      - name: Install dependencies
+        run: yarn install
+
+      # 构建项目
+      - name: Build
+        run: yarn build
+
+      # 将构建后的文件部署到 gh-pages 分支
+      - name: Deploy
+        uses: crazy-max/ghaction-github-pages@v3
+        with:
+          target_branch: main
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

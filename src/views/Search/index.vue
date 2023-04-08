@@ -12,7 +12,7 @@
       </ul>
     </div>
     <div class="icons_num">
-      <span>图标数</span>
+      <span >图标数</span>
       {{ iconsNums }}/
       <span style="font-size:16px">{{ iconsNum }}</span>
     </div>
@@ -33,7 +33,7 @@ import { ref, computed, reactive, watch } from "vue";
 import { useModel } from "@/store/model"
 import { useUserStore } from "@/store/index"
 
-
+import {Plus,Apple} from "@wwcattlewei/icons-vue"
 
 
 const modelOpe = useModel()
@@ -55,7 +55,6 @@ const iconsNums = computed(() => {
     const arrChildren = useIcons.iconData[key];
     iconsNum += arrChildren.length
   }
-  console.log(iconsNum);
   
   return iconsNum
 })
