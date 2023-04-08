@@ -3,7 +3,7 @@ ame: pages
 # 在 main 分支被推送代码时触发 actions
 on:
   push:
-    branches: [main]
+    branches: [master]
 
 jobs:
   deploy:
