@@ -1,32 +1,46 @@
-import { defineStore } from "pinia"
-import lStorage from "@/utils/storage"
+import { defineStore } from 'pinia'
+import lStorage from '@/utils/storage'
 
 interface ThemeSetting {
   status?: number
   theme?: string
 }
 export const useTheme = defineStore({
-  id: "theme",
+  id: 'theme',
   state: (): ThemeSetting => ({
     status: 1,
-    theme: "light",
+    theme: 'light'
   }),
   getters: {},
   actions: {
     editTheme(): void {
-      let htmlDom = document.querySelector("html")
-      if (htmlDom?.classList.contains("dark")) {
-        htmlDom.classList.remove("dark")
+      const htmlDom = document.querySelector('html')
+      if (htmlDom?.classList.contains('dark')) {
+        htmlDom.classList.remove('dark')
         //修改store和本地的主题
-        lStorage("theme", { theme: "light", status: 1 }, "add")
-        this.theme = "light"
+        lStorage(
+          'theme',
+          {
+            theme: 'light',
+            status: 1
+          },
+          'add'
+        )
+        this.theme = 'light'
         this.status = 1
       } else {
-        htmlDom?.classList.add("dark")
-        lStorage("theme", { theme: "dark", status: 2 }, "add")
-        this.theme = "dark"
+        htmlDom?.classList.add('dark')
+        lStorage(
+          'theme',
+          {
+            theme: 'dark',
+            status: 2
+          },
+          'add'
+        )
+        this.theme = 'dark'
         this.status = 2
       }
-    },
-  },
+    }
+  }
 })

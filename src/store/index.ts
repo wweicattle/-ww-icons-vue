@@ -1,11 +1,9 @@
-import { defineStore } from "pinia"
-import {shallowRef} from "vue"
-import { iconAttr } from "@/types/storeIcon"
-import iconData from "@/utils/demo"
-import WwIcons from "@wwcattlewei/icons-vue"
+import { defineStore } from 'pinia'
+import { shallowRef } from 'vue'
+import { iconAttr } from '@/types/storeIcon'
+import iconData from '@/utils/demo'
+import WwIcons from '@wwcattlewei/icons-vue'
 const { icons }: Record<string, any> = WwIcons
-
-
 
 const dealSortIcons = () => {
   const sortIconsData: any = []
@@ -23,9 +21,9 @@ const dealSortIcons = () => {
 
   return sortIconsData
 }
-console.log(dealSortIcons());
+console.log(dealSortIcons())
 
-type IconType = "line" | "solid"
+type IconType = 'line' | 'solid'
 interface UserState {
   iconAttr: iconAttr
   iconData: Record<string, any>
@@ -33,30 +31,30 @@ interface UserState {
   selectIconType: IconType
   lineNum: number
 }
-const typeIconsNum = (val: Record<string, any>, type: IconType) => {
-  let iconNums = 0
-  iconNums += val.reduce((acc: number, val: Record<string, any>) => {
-    if (val.type == type) {
-      acc += 1
-      return acc
-    } else {
-      return acc
-    }
-  }, 0)
-  return iconNums
-  // return useIcons.iconData.filter((val: any) => { return val.type == useIcons.selectIconType }).length || 0
-}
+// const typeIconsNum = (val: Record<string, any>, type: IconType) => {
+//   let iconNums = 0
+//   iconNums += val.reduce((acc: number, val: Record<string, any>) => {
+//     if (val.type == type) {
+//       acc += 1
+//       return acc
+//     } else {
+//       return acc
+//     }
+//   }, 0)
+//   return iconNums
+//   // return useIcons.iconData.filter((val: any) => { return val.type == useIcons.selectIconType }).length || 0
+// }
 export const useUserStore = defineStore({
-  id: "user",
+  id: 'user',
   state: (): UserState => ({
     iconAttr: {
-      color: "#1a1a1a",
-      iconComponent: {},
+      color: '#1a1a1a',
+      iconComponent: {}
     },
     iconData: dealSortIcons(),
     copyIconData: dealSortIcons(),
-    selectIconType: "line",
-    lineNum: 0,
+    selectIconType: 'line',
+    lineNum: 0
   }),
   getters: {
     getIconsAttr(): any {
@@ -64,38 +62,39 @@ export const useUserStore = defineStore({
     },
     getIcons(): any {
       return this.iconData
-    },
+    }
   },
   actions: {
     /** 设置图标信息 */
     editIcons(params: iconAttr) {
-      Object.assign(this.iconAttr, { ...params })
+      Object.assign(this.iconAttr, {
+        ...params
+      })
     },
     resetIcon() {
-      Object.assign(this.iconAttr, { color: "#1a1a1a", spin: false })
+      Object.assign(this.iconAttr, {
+        color: '#1a1a1a',
+        spin: false
+      })
     },
-    setIconData(params: Record<string, any>) {
-      // Object.assign(this.iconData, { ...params })
-      // Object.assign(this.copyIconData, { ...params })
-    },
+    // setIconData(params: Record<string, any>) {
+    //   // Object.assign(this.iconData, { ...params })
+    //   // Object.assign(this.copyIconData, { ...params })
+    // },
     selectIconData(inputVal: string) {
       // 筛选的图标
-      console.log(this.copyIconData);
-      
-      const copyData = { ...this.copyIconData }
+      console.log(this.copyIconData)
+
+      const copyData = {
+        ...this.copyIconData
+      }
       for (const key in copyData) {
         copyData[key] = copyData[key].filter((element: Record<string, any>) => {
           return (
             (element.type == this.selectIconType &&
-              element.name
-                .toString()
-                .toLocaleLowerCase()
-                .indexOf(inputVal.toLocaleLowerCase()) >= 0) ||
+              element.name.toString().toLocaleLowerCase().indexOf(inputVal.toLocaleLowerCase()) >= 0) ||
             (element.type == this.selectIconType &&
-              element.engliashName
-                .toString()
-                .toLocaleLowerCase()
-                .indexOf(inputVal.toLocaleLowerCase()) >= 0)
+              element.engliashName.toString().toLocaleLowerCase().indexOf(inputVal.toLocaleLowerCase()) >= 0)
           )
         })
       }
@@ -113,6 +112,6 @@ export const useUserStore = defineStore({
     },
     changeIconType(val: IconType) {
       this.selectIconType = val
-    },
-  },
+    }
+  }
 })

@@ -1,12 +1,19 @@
 <template>
   <div class="icon-show-contain">
-    <component :is="iconAttr.iconComponent" v-if='Object.keys(iconAttr.iconComponent).length>0' :key="Date.now()"  :color="iconAttr.color" :width="iconAttr.width" :spin="iconAttr.spin">
+    <component
+      :is="iconAttr.iconComponent"
+      v-if="Object.keys(iconAttr.iconComponent).length > 0"
+      :key="Date.now()"
+      :color="iconAttr.color"
+      :width="iconAttr.width"
+      :spin="iconAttr.spin"
+    >
     </component>
   </div>
 </template>
 
 <script setup>
-import { computed } from "vue"
+import { computed } from 'vue'
 import { useUserStore } from '@/store'
 
 const store = useUserStore()
@@ -16,18 +23,16 @@ const iconAttr = computed(() => {
   return store.getIconsAttr
 })
 
-const props = defineProps({
+defineProps({
   visble: {
     type: Boolean,
     default: false
   },
   iconComponent: {
-    type: Object,
-    default: () => { }
+    type: Object
   },
   attrProps: {
-    type: Object,
-    default: () => { }
+    type: Object
   }
 })
 </script>
@@ -35,13 +40,21 @@ const props = defineProps({
 <style lang="less" scoped>
 .icon-show-contain {
   position: relative;
-  background-image: linear-gradient(45deg, #efefef 25%, hsla(0, 0%, 94%, 0) 0, hsla(0, 0%, 94%, 0) 75%, #efefef 0, #efefef), linear-gradient(45deg, #efefef 25%, hsla(0, 0%, 94%, 0) 0, hsla(0, 0%, 94%, 0) 75%, #efefef 0, #efefef);
+  background-image: linear-gradient(
+      45deg,
+      #efefef 25%,
+      hsla(0, 0%, 94%, 0) 0,
+      hsla(0, 0%, 94%, 0) 75%,
+      #efefef 0,
+      #efefef
+    ),
+    linear-gradient(45deg, #efefef 25%, hsla(0, 0%, 94%, 0) 0, hsla(0, 0%, 94%, 0) 75%, #efefef 0, #efefef);
   height: 100%;
   background-color: #fff;
   background-position: 0 0, 10px 10px;
   background-size: 20px 20px;
 
-  &>img {
+  & > img {
     width: 70%;
     height: 70%;
     margin: auto;

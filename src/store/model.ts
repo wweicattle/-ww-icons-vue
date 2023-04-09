@@ -1,20 +1,20 @@
-import { defineStore } from "pinia"
+import { defineStore } from 'pinia'
 
-type ModelType = "left" | "right"
+type ModelType = 'left' | 'right'
 export const useModel = defineStore({
-  id: "Model",
+  id: 'Model',
   state: () => ({
-    model: "left",
+    model: 'left'
   }),
   getters: {
     getIconsAttr(): any {
       return this.model
-    },
+    }
   },
   actions: {
     /** 设置图标信息 */
     editModel(model: ModelType) {
       this.model = model
-    },
-  },
+    }
+  }
 })

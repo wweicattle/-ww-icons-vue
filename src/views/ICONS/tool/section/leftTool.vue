@@ -1,11 +1,16 @@
 <template>
   <div class="ope_tool">
     <template v-for="val in toolItem">
-      <div v-if="val == 'color'" @input="changeColor" class="color_item">
-        <span class="color_select_css" :style="{ background: store.iconAttr.color }"></span>
-        <input type="color" style="opacity: 0;" class="input_color">
+      <div v-if="val == 'color'" @input="changeColor" class="color_item" :key="val">
+        <span
+          class="color_select_css"
+          :style="{
+            background: store.iconAttr.color
+          }"
+        ></span>
+        <input type="color" style="opacity: 0" class="input_color" />
       </div>
-      <div v-else @click="changeAttrBtn(val)">
+      <div v-else @click="changeAttrBtn(val)" :key="val">
         <component :is="val == 'refresh' ? Promotion : RefreshRight" width="20px"></component>
       </div>
     </template>
@@ -13,26 +18,24 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
-import {RefreshRight,Promotion} from "@wwcattlewei/icons-vue"
-import toolItem from "./utils/util"
+import { reactive } from 'vue'
+import { RefreshRight, Promotion } from '@wwcattlewei/icons-vue'
+import toolItem from './utils/util'
 import { useUserStore } from '@/store'
 const store = useUserStore()
 
 interface toolOpe {
-  color?: string,
-  refresh?: string,
-  width?: string,
+  color?: string
+  refresh?: string
+  width?: string
   spin: boolean
 }
-
 
 const styleAttr = reactive<toolOpe>({
   color: '#1a1a1a',
   width: undefined,
   spin: false
 })
-
 
 const changeColor = (event: HTMLInputElement | any) => {
   if (event.target) {
@@ -47,11 +50,11 @@ const changeAttrBtn = (val: string) => {
     case 'refresh':
       //重置选中图标
       store.resetIcon()
-      break;
+      break
     case 'spin':
       styleAttr.spin = !styleAttr.spin
       store.editIcons(styleAttr)
-      break;
+      break
   }
 }
 </script>
@@ -90,15 +93,13 @@ const changeAttrBtn = (val: string) => {
       height: 100%;
       opacity: 0;
     }
-
   }
 
-
-  &>img {
+  & > img {
     margin-bottom: 6px;
   }
 
-  &>div {
+  & > div {
     display: flex;
     align-items: center;
     margin-bottom: 6px;

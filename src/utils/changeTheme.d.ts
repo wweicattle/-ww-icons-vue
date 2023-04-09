@@ -1,2 +1,2 @@
-declare const changeTheme: () => void;
-export default changeTheme;
+declare const changeTheme: () => void
+export default changeTheme

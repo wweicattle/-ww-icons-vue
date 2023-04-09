@@ -1,21 +1,24 @@
 <template>
   <div class="code_contain">
-    <div class="text_header space-between"><span class="right-title">{{ iconAttr.iconComponent?.__name }}</span> <span
-        class="code_del" @click="emits('changeVis')
-        "><Close width="20px"/></span></div>
-    <div class="code_codes">{{ codeStr }}</div>
+    <div class="text_header space-between">
+      <span class="right-title">{{ iconAttr.iconComponent?.__name }}</span>
+      <span class="code_del" @click="emits('changeVis')"><Close width="20px" /></span>
+    </div>
+    <div class="code_codes">
+      {{ codeStr }}
+    </div>
     <div class="code_ope">
       <span>24px</span>
-      <span><Download width="18px" style="vertical-align: -4px;"/><span class="png_txt">PNG</span></span>
+      <span><Download width="18px" style="vertical-align: -4px" /><span class="png_txt">PNG</span></span>
       <span @click="copySvgCode">SVG CODE</span>
     </div>
   </div>
 </template>
 
 <script setup>
-import { watch, computed, ref } from "vue"
+import { watch, computed, ref } from 'vue'
 import { useUserStore } from '@/store'
-import computeCodeName from "./utils/computedCodeStr"
+import computeCodeName from './utils/computedCodeStr'
 // import { Close,Download} from "@wwcattlewei/icons-vue";
 const store = useUserStore()
 
@@ -28,14 +31,17 @@ const iconAttr = computed(() => {
 
 const codeStr = ref(``)
 
-// 
-watch(iconAttr.value, (newVal) => {
-  // 计算出源码字符串
-  codeStr.value = computeCodeName(newVal)
-},{
-  immediate:true
-})
-
+//
+watch(
+  iconAttr.value,
+  (newVal) => {
+    // 计算出源码字符串
+    codeStr.value = computeCodeName(newVal)
+  },
+  {
+    immediate: true
+  }
+)
 </script>
 
 <style lang="less" scoped>
@@ -74,19 +80,18 @@ watch(iconAttr.value, (newVal) => {
       cursor: pointer;
       background: #d9eaea;
     }
-
   }
 
   .code_ope {
-    &>span {
+    & > span {
       margin: 0 4px;
       border: 1px solid #eee;
       padding: 10px 20px;
       border-radius: 4px;
-      &:hover{
-        opacity: .6;
+      &:hover {
+        opacity: 0.6;
       }
-      & .png_txt{
+      & .png_txt {
         margin-left: 6px;
       }
     }

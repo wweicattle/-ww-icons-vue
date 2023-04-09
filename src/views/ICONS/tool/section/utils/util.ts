@@ -1,2 +1,2 @@
-const toolItem: Array<string> = ["color", "spin",'refresh']
+const toolItem: Array<string> = ['color', 'spin', 'refresh']
 export default toolItem

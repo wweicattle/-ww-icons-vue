@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import Header from "@/views/Header/index.vue"
-import Icons from "@/views/ICONS/Icons.vue"
-import Search from "@/views/Search/index.vue"
-import LeftMenu from "@/views/LeftMenu/index.vue"
-const activeMenuIndex = ref<Number>(0)
+import Header from '@/views/Header/index.vue'
+import Icons from '@/views/ICONS/Icons.vue'
+import Search from '@/views/Search/index.vue'
+import LeftMenu from '@/views/LeftMenu/index.vue'
 </script>
 <template>
   <div class="icon-contain">
-    <!-- <span class="tests" ref="test">test33</span> -->
     <div class="icon_header">
       <Header />
     </div>
@@ -80,7 +77,7 @@ const activeMenuIndex = ref<Number>(0)
           cursor: pointer;
         }
 
-        &>div {
+        & > div {
           &.active_css {
             background: linear-gradient(59deg, #edf2f2 0%, #cef7f3 100%);
             font-size: 14px;
@@ -104,7 +101,5 @@ const activeMenuIndex = ref<Number>(0)
       }
     }
   }
-
-
 }
 </style>

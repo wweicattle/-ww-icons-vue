@@ -7,32 +7,29 @@
       <icon-show />
     </div>
     <div class="ope_code_text">
-      <right-code  @changeVis="changeVis" />
+      <right-code @changeVis="changeVis" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import leftTool from "./section/leftTool.vue"
-import iconShow from "./section/iconShow.vue"
-import rightCode from "./section/rightCode.vue"
+import leftTool from './section/leftTool.vue'
+import iconShow from './section/iconShow.vue'
+import rightCode from './section/rightCode.vue'
 
 let emits = defineEmits(['update:visble'])
-// 
+//
 
 const props = defineProps({
   visble: {
     type: Boolean,
     default: false
-  },
+  }
 })
-
-
 
 const changeVis = () => {
   emits('update:visble', !props.visble)
 }
-
 </script>
 
 <style lang="less" scoped>
@@ -47,7 +44,7 @@ const changeVis = () => {
   right: 20px;
   bottom: 20px;
 
-  &>div {
+  & > div {
     height: 100%;
   }
 

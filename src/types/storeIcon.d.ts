@@ -1,7 +1,7 @@
 export interface iconAttr {
-    iconComponent?: Object;
-    color?: string;
-    refresh?: string;
-    width?: string;
-    spin?: boolean;
+  iconComponent?: any
+  color?: string
+  refresh?: string
+  width?: string
+  spin?: boolean
 }

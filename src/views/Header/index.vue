@@ -1,26 +1,30 @@
 <template>
   <div class="header-contain align-item">
     <div class="left_content space-between">
-      <div style="height: 100%;font-size:16px;font-weight:600">
-        <img src="@/assets/img/logo.png" alt="" class="logo_">
+      <div style="height: 100%; font-size: 16px; font-weight: 600">
+        <img src="@/assets/img/logo.png" alt="" class="logo_" />
       </div>
       <div class="sort-content align-item">
-        <template v-for="(val, index) in ['图标库', '插件库', '字体库', 'lottie库', '使用说明']">
-          <span class='menu_item_css' @click="activeMenuIndex = index"
-            :class="{ active: activeMenuIndex === index ? true : false }">
+        <template v-for="(val, index) in ['图标库', '插件库', '字体库', 'lottie库', '使用说明']" :key="index">
+          <span
+            class="menu_item_css"
+            @click="activeMenuIndex = index"
+            :class="{ active: activeMenuIndex === index ? true : false }"
+          >
             {{ val }}
-            <img src="@/assets/img/star.png" alt="" class="star">
+            <img src="@/assets/img/star.png" alt="" class="star" />
             <div class="help-text_css" v-if="val == '使用说明' && activeMenuIndex == 4" @click.stop="null">
               <div class="quick_start">
-                <img src="@/assets/img/codeUpload.png" alt="">
+                <img src="@/assets/img/codeUpload.png" alt="" />
                 <div class="content">
                   <div class="tit_css">快速开始</div>
-                  <div>Looking to quickly add Boxicons to your project? Use the paths to CDN or Download the files here.
+                  <div>
+                    Looking to quickly add Boxicons to your project? Use the paths to CDN or Download the files here.
                   </div>
                 </div>
               </div>
               <div class="install_">
-                <img src="@/assets/img/begin.png" alt="">
+                <img src="@/assets/img/begin.png" alt="" />
                 <div class="install_code">
                   <div class="tit_css">安装</div>
                   <div class="context" v-html="compiledMarkdown"></div>
@@ -33,33 +37,32 @@
     </div>
     <span class="right_content align-item" @click="changeTheme" v-bind="theme.status">
       <!-- {{ themeConfig}} -->
-      <template lang="" v-if='theme.status == 1'>
-        <img src="@/assets/img/night.png" alt="">
+      <template v-if="theme.status == 1">
+        <img src="@/assets/img/night.png" alt="" />
         <span>暗夜模式</span>
       </template>
       <template v-else>
-        <img src="@/assets/img/sunshine.png" alt="">
+        <img src="@/assets/img/sunshine.png" alt="" />
         <span>亮色模式</span>
       </template>
     </span>
-
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
-import mdStr from "./demo.md?raw"
-import { useTheme } from "@/store/theme"
-import { marked } from "marked";
-import hljs from "highlight.js"
+import { ref } from 'vue'
+import mdStr from './demo.md?raw'
+import { useTheme } from '@/store/theme'
+import { marked } from 'marked'
+import hljs from 'highlight.js'
 // const hljs={}
 const theme = useTheme()
-const activeMenuIndex = ref<Number>(0)
+const activeMenuIndex = ref<number>(0)
 const changeTheme = () => {
   theme.editTheme()
 }
 
-var rendererMD = new marked.Renderer();
+var rendererMD = new marked.Renderer()
 marked.setOptions({
   renderer: rendererMD,
   highlight: function (code: any, lang: any) {
@@ -96,13 +99,12 @@ const compiledMarkdown = ref(marked.parse(mdStr))
       td,
       th {
         padding: 6px 0 6px 8px;
-
       }
     }
   }
 }
 </style>
-<style lang="less" scoped >
+<style lang="less" scoped>
 .header-contain {
   position: relative;
   height: 60px;
@@ -165,8 +167,6 @@ const compiledMarkdown = ref(marked.parse(mdStr))
         //   height: 5px;
         //   background: linear-gradient(90deg, #FFE872 0%, #FFCC3F 100%);
         // }
-
-
       }
 
       .help-text_css {
@@ -186,8 +186,7 @@ const compiledMarkdown = ref(marked.parse(mdStr))
         box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3);
         transition: all 1s ease;
 
-
-        &>div {
+        & > div {
           display: flex;
           margin-bottom: 20px;
 
@@ -228,14 +227,14 @@ const compiledMarkdown = ref(marked.parse(mdStr))
     display: flex;
     justify-content: center;
 
-    &>img {
+    & > img {
       width: 20px;
       margin-right: 2px;
     }
 
     &:hover {
       cursor: pointer;
-      opacity: .7;
+      opacity: 0.7;
     }
   }
 }
