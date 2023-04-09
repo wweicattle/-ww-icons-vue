@@ -9,7 +9,7 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "jsx": "preserve",
+    "jsx":"preserve",
     "target": "ES2018",
     "sourceMap": true,
     "lib": ["ES2018", "DOM"],
@@ -19,7 +19,7 @@
     "allowJs": true,
     "paths": {
       "@/*": ["*", "src/*"]
-    }
+    },
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [

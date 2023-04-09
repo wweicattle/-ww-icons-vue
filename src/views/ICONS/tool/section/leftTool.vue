@@ -1,6 +1,6 @@
 <template>
   <div class="ope_tool">
-    <template v-for="val in toolItem">
+    <template v-for="(val, index) in toolItem">
       <div v-if="val == 'color'" @input="changeColor" class="color_item" :key="val">
         <span
           class="color_select_css"
@@ -10,7 +10,7 @@
         ></span>
         <input type="color" style="opacity: 0" class="input_color" />
       </div>
-      <div v-else @click="changeAttrBtn(val)" :key="val">
+      <div v-else @click="changeAttrBtn(val)" :key="+index">
         <component :is="val == 'refresh' ? Promotion : RefreshRight" width="20px"></component>
       </div>
     </template>

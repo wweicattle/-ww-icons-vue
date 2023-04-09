@@ -30,6 +30,6 @@ module.exports = {
     ],
     '@typescript-eslint/no-explicit-any': 'off',
     'vue/multi-word-component-names': 'off',
-    'no-inferrable-types': 0 // **此处为修改**
+    '@typescript-eslint/no-inferrable-types': 'off'
   }
 }

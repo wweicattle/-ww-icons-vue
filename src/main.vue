@@ -3,16 +3,20 @@ import Header from '@/views/Header/index.vue'
 import Icons from '@/views/ICONS/Icons.vue'
 import Search from '@/views/Search/index.vue'
 import LeftMenu from '@/views/LeftMenu/index.vue'
+import As from './demo'
 </script>
 <template>
+  <!-- <As /> -->
   <div class="icon-contain">
     <div class="icon_header">
       <Header />
     </div>
     <div class="icon_content">
       <Search />
-      <left-menu />
-      <Icons class="icons_contains clear_scroll" />
+      <div class="icon-items_contain">
+        <left-menu />
+        <Icons class="icons_contains clear_scroll" />
+      </div>
     </div>
   </div>
 </template>
@@ -64,33 +68,6 @@ import LeftMenu from '@/views/LeftMenu/index.vue'
       margin-top: 20px;
       overflow: hidden;
       flex: 1;
-
-      .left-menu_icon {
-        width: 168px;
-        border-right: 1px solid var(--border);
-        height: 100%;
-        overflow-y: auto;
-
-        &:hover {
-          cursor: pointer;
-        }
-
-        & > div {
-          &.active_css {
-            background: linear-gradient(59deg, #edf2f2 0%, #cef7f3 100%);
-            font-size: 14px;
-            position: relative;
-            color: var(--primary);
-          }
-
-          .text_item {
-            display: inline-block;
-            font-size: 15px;
-            font-weight: 600;
-            padding: 14px 0 14px 14px;
-          }
-        }
-      }
 
       .icons_contains {
         height: calc(100% - 30px);

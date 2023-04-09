@@ -12,6 +12,7 @@
     "format": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\""
   },
   "dependencies": {
+    "@vitejs/plugin-vue-jsx": "^3.0.1",
     "@wwcattlewei/icons-vue": "^2.0.22",
     "esbuild-vue": "^1.2.2",
     "highlight.js": "^11.7.0",
@@ -26,7 +27,7 @@
     "@types/node": "^18.14.1",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
-    "@vitejs/plugin-vue": "^4.0.0",
+    "@vitejs/plugin-vue": "^4.1.0",
     "@yankeeinlondon/code-builder": "^1.2.1",
     "add": "^2.0.6",
     "axios": "^1.3.4",
