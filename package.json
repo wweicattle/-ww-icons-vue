@@ -17,6 +17,7 @@
     "marked": "^4.2.12",
     "md-powerpack": "^1.0.3",
     "pinia": "^2.0.33",
+    "vercel": "^28.18.4",
     "vue": "^3.2.45"
   },
   "devDependencies": {
