@@ -3,6 +3,7 @@ import Header from '@/views/Header/index.vue'
 import Icons from '@/views/ICONS/Icons.vue'
 import Search from '@/views/Search/index.vue'
 import LeftMenu from '@/views/LeftMenu/index.vue'
+const a = 323
 </script>
 <template>
   <div class="icon-contain">
@@ -11,10 +12,8 @@ import LeftMenu from '@/views/LeftMenu/index.vue'
     </div>
     <div class="icon_content">
       <Search />
-      <div class="icon-items_contain">
-        <left-menu />
-        <Icons class="icons_contains clear_scroll" />
-      </div>
+      <left-menu />
+      <Icons class="icons_contains clear_scroll" />
     </div>
   </div>
 </template>
