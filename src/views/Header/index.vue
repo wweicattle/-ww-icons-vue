@@ -13,17 +13,19 @@
           >
             {{ val.name }}
             <img src="@/assets/img/star.png" alt="" class="star" />
-            <div class="help-text_css" v-if="val.value == 'help' && activeMenuIndex == 2" @click.stop="null">
-              <div class="install_">
-                <img src="@/assets/img/begin.png" alt="" />
-                <div class="install_code">
-                  <div class="tit_css">安装</div>
-                  <div class="context" v-html="compiledMarkdown"></div>
-                </div>
-              </div>
-            </div>
           </span>
         </template>
+        <span class="menu_item_css use_help" @mousemove="mouseHelpVis = true"
+          >使用说明
+          <div class="help-text_css" v-if="mouseHelpVis" @click.stop="null" @mouseleave="mouseHelpVis = false">
+            <div class="install_">
+              <img src="@/assets/img/begin.png" alt="" />
+              <div class="install_code">
+                <div class="tit_css">安装</div>
+                <div class="context" v-html="compiledMarkdown"></div>
+              </div>
+            </div></div
+        ></span>
       </div>
     </div>
     <span class="right_content align-item" @click="changeTheme" v-bind="theme.status">
@@ -56,6 +58,9 @@ const router = useRouter()
 const route = useRoute()
 
 const activeMenuIndex = ref<number>(0)
+
+// 移入变量
+const mouseHelpVis = ref<boolean>(false)
 const changeTheme = () => {
   theme.editTheme()
 }
@@ -144,7 +149,12 @@ watch(
         margin-right: 20px;
         position: relative;
         font-weight: 800;
-
+        &.use_help {
+          color: rgb(158, 160, 161);
+          &:hover {
+            cursor: pointer;
+          }
+        }
         .star {
           display: none;
           position: absolute;

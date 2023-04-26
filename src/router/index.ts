@@ -11,7 +11,7 @@ export const routes: Array<RouteRecordRaw> = [
     path: '/',
     name: 'Layouts',
     component: Main,
-    redirect: '/home',
+    redirect: '/illustrate-home',
     children: [
       {
         path: '/home',

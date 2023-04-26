@@ -13,10 +13,6 @@ const tabs: Array<TabItem> = [
     name: '插件库',
     value: 'plugins',
     path: '/illustrate-home'
-  },
-  {
-    name: '使用说明',
-    value: 'help'
   }
 ]
 export { tabs }

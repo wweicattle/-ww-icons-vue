@@ -2,63 +2,73 @@
 import Header from '@/views/Header/index.vue'
 </script>
 <template>
-  <div class="icon_content">
-    <div>323</div>
+  <div class="svg_ills_content">
+    <div class="tit">插画资源</div>
+    <div class="svg_illsutration">
+      <template v-for="val in 4" :key="val">
+        <div class="svg-items">
+          <img src="@/assets/svg/404.svg" alt="" />
+          <img src="@/assets/svg/信息正在入库.svg" alt="" />
+          <img src="@/assets/svg/列表内容为空.svg" alt="" />
+          <img src="@/assets/svg/搜索内容为空.svg" alt="" />
+          <div class="title_content">
+            <div class="title space-between">
+              <span class="line">星空主题的空状态插画</span>
+              <span class="ills_num">illstrates:16</span>
+            </div>
+            <div class="text_describe">星空主题的空状态插画</div>
+          </div>
+        </div>
+      </template>
+    </div>
   </div>
 </template>
 
 <style lang="less">
-#app {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.icon-contain {
-  color: var(--color);
-  background-color: var(--backgroundTheme);
-  overflow: hidden;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-
-  // transition: all 0.3s;
-  .tests {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    // border-radius: 50%;
-    top: 0;
-    background: var(--fontColor);
-    // opacity: .2;
-    transform: translate(100%, 0);
-    transition: all 0.5s;
+.svg_ills_content {
+  // border: 1px solid red;
+  overflow: auto;
+  .tit {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    margin: 40px 0;
   }
-
-  .icon_header {
-    position: relative;
-    z-index: 10;
-  }
-
-  /* Safari */
-  .icon_content {
-    flex: 1;
-    overflow: hidden;
+  .svg_illsutration {
     display: flex;
-    flex-direction: column;
-
-    .icon-items_contain {
-      display: flex;
-      border-top: 1px solid var(--border);
-      margin-top: 20px;
-      overflow: hidden;
-      flex: 1;
-
-      .icons_contains {
-        height: calc(100% - 30px);
-        overflow-y: auto;
-        position: relative;
+    flex-wrap: wrap;
+    justify-content: center;
+    .svg-items {
+      // border: 1px solid red;
+      margin: 0 20px 20px 20px;
+      width: 320px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      img {
+        width: 160px;
+      }
+      &:hover {
+        cursor: pointer;
+        // box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--boxShdow);
+      }
+      .title_content {
+        padding: 10px;
+        .title {
+          font-size: 16px;
+          margin-bottom: 10px;
+          display: flex;
+          .line {
+            font-weight: 600;
+          }
+          .ills_num {
+            color: #ccc;
+          }
+        }
+        .title_content {
+          color: #999;
+          font-size: 12px;
+        }
       }
     }
   }

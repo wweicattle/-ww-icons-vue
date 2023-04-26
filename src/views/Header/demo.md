@@ -8,17 +8,6 @@
   $ npm add @wwcattlewei/icons-vue
 ```
 
-<!-- ```html
-<div id="app"></div>
-<script src="https://cdn.jsdelivr.net/npm/@varlet/ui/umd/varlet.js"></script>
-<script>
-  const app = Vue.createApp({
-    template: '<var-button>按钮</var-button>'
-  })
-  app.use(Varlet).mount('#app')
-</script>
-``` -->
-
 ### 全局引入
 
 如果你对打包后的文件大小不是很在乎，那么使用完整导入会更方便。
@@ -41,7 +30,7 @@ app.mount('#app')
 <template>
     <add-location />
 </template>
-<script>
+<script lang='ts'>
   import { AddlLocation } from '@wwcattlewei/icons-vue'
   export default {
     components: { AddlLocation },
