@@ -1,20 +1,17 @@
 import { defineConfig } from 'vite'
-import path from 'path'
 import vue from '@vitejs/plugin-vue'
-import { visualizer } from 'rollup-plugin-visualizer'
 import Components from 'unplugin-vue-components/vite'
-import vueJsx from '@vitejs/plugin-vue-jsx'
+
+import requireTransform from 'vite-plugin-require-transform'
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: './',
   plugins: [
-    vue({
-      include: [/\.vue$/] //
-    }),
-    // visualizer(),
-    vueJsx(),
+    vue(),
     Components({
       resolvers: [
         (componentName) => {
+          console.log(componentName)
           if (componentName.startsWith('Tq'))
             return {
               name: componentName.split('Tq')[1],
@@ -23,12 +20,8 @@ export default defineConfig({
         }
       ]
     })
-  ],
-  base: './',
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src')
-    },
-    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
-  }
+    // requireTransform({
+    //   fileRegex: /.ts$|.tsx$|.vue$/
+    // })
+  ]
 })

@@ -2,27 +2,18 @@
   <div class="header-contain align-item">
     <div class="left_content space-between">
       <div style="height: 100%; font-size: 16px; font-weight: 600">
-        <img src="@/assets/img/logo.png" alt="" class="logo_" />
+        <img src="@/assets/img/logo.png" alt="" class="logo_" @click="router.push('/')" />
       </div>
       <div class="sort-content align-item">
-        <template v-for="(val, index) in ['图标库', '插件库', '字体库', 'lottie库', '使用说明']" :key="index">
+        <template v-for="(val, index) in tabs" :key="index">
           <span
             class="menu_item_css"
-            @click="activeMenuIndex = index"
+            @click="changeIcons(val, index)"
             :class="{ active: activeMenuIndex === index ? true : false }"
           >
-            {{ val }}
+            {{ val.name }}
             <img src="@/assets/img/star.png" alt="" class="star" />
-            <div class="help-text_css" v-if="val == '使用说明' && activeMenuIndex == 4" @click.stop="null">
-              <div class="quick_start">
-                <img src="@/assets/img/codeUpload.png" alt="" />
-                <div class="content">
-                  <div class="tit_css">快速开始</div>
-                  <div>
-                    Looking to quickly add Boxicons to your project? Use the paths to CDN or Download the files here.
-                  </div>
-                </div>
-              </div>
+            <div class="help-text_css" v-if="val.value == 'help' && activeMenuIndex == 2" @click.stop="null">
               <div class="install_">
                 <img src="@/assets/img/begin.png" alt="" />
                 <div class="install_code">
@@ -50,13 +41,20 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import mdStr from './demo.md?raw'
 import { useTheme } from '@/store/theme'
 import { marked } from 'marked'
 import hljs from 'highlight.js'
+import { tabs, type TabItem } from './utils/tabMenu'
 // const hljs={}
+
+import { useRouter, useRoute } from 'vue-router'
 const theme = useTheme()
+
+const router = useRouter()
+const route = useRoute()
+
 const activeMenuIndex = ref<number>(0)
 const changeTheme = () => {
   theme.editTheme()
@@ -79,6 +77,25 @@ marked.setOptions({
   xhtml: false
 })
 const compiledMarkdown = ref(marked.parse(mdStr))
+
+const changeIcons = (params: TabItem, index: number) => {
+  activeMenuIndex.value = index
+  if (params.path) router.push(params.path)
+}
+watch(
+  () => route.path,
+  (newVal) => {
+    console.log(newVal)
+    // 回流url上的菜单
+    // tabs.findIndex((res) => {
+    //   return res.path == newVal
+
+    // })
+  },
+  {
+    immediate: true
+  }
+)
 </script>
 <style lang="less">
 .context {

@@ -206,6 +206,8 @@ const sortTypeChange = (val: 'solid' | 'line') => {
 
   .icons_num {
     margin-left: 16px;
+    width: 160px;
+    text-align: center;
   }
 
   .tool_css {
