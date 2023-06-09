@@ -46,7 +46,10 @@ const newIcons = computed(() => {
   return useIcons.iconData
 })
 
-// console.log(newIcons.value);
+// 图标展示的宽度
+const modelWidth = computed(() => {
+  return useModels.model === 'left' ? '140px' : '60px'
+})
 
 const typeIconsNum = (val: Record<string, any>) => {
   let iconNums = 0
@@ -100,25 +103,17 @@ onBeforeMount(() => {
   }
 
   .icons_content {
-    display: flex;
-    flex-wrap: wrap;
-
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(v-bind(modelWidth), 1fr));
     .icon_items {
       font-size: 20px;
-      // width: 120px;
       border: 1px solid var(--border);
-      // margin: 0 10px 16px 10px;
       text-align: center;
       padding: 10px;
       box-sizing: border-box;
       margin-bottom: 20px;
-      // width: calc((100% - 120px) / 9);
-      // margin-right: calc(120px / 8);
-      margin-right: 10px;
-
-      &:last-child {
-        // margin-right: 0;
-      }
+      justify-content: center;
 
       svg {
         width: 30px;
