@@ -1,5 +1,5 @@
 <template>
-  <div class="mask-contain_detail align-item" v-if="visble">
+  <div class="mask-contain_detail align-item" v-if="visble" @click.stop="null">
     <div class="ope_item">
       <left-tool />
     </div>
@@ -13,9 +13,11 @@
 </template>
 
 <script lang="ts" setup>
+import { onMounted } from 'vue'
 import leftTool from './section/leftTool.vue'
 import iconShow from './section/iconShow.vue'
 import rightCode from './section/rightCode.vue'
+import { watchGlobalEvent } from '@/utils/globalEvent'
 
 let emits = defineEmits(['update:visble'])
 //
@@ -30,6 +32,20 @@ const props = defineProps({
 const changeVis = () => {
   emits('update:visble', !props.visble)
 }
+
+onMounted(() => {
+  // 对全局点击时间做判断
+  watchGlobalEvent((e) => {
+    console.log(e)
+    console.log('全局关闭')
+    // emits('changeVis')
+    if (!props.visble) {
+      // emits('update:visble', true)
+    } else {
+      // emits('update:visble', false)
+    }
+  })
+})
 </script>
 
 <style lang="less" scoped>
@@ -56,10 +72,13 @@ const changeVis = () => {
   .ope_icon {
     width: 200px;
     margin: 0 10px;
+    overflow: hidden;
   }
 
   .ope_code_text {
+    flex: 1;
     width: 360px;
+    overflow: hidden;
   }
 }
 </style>

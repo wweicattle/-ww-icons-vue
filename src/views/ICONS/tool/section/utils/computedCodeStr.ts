@@ -19,5 +19,5 @@ export default function computeCodeName(storeAttrs: iconAttr) {
       attrStr += `${element}='${attrValues[element]}' `
     }
   })
-  return `<${attrValues.iconComponent.__name} ${attrStr}></${attrValues.iconComponent.__name}>`
+  return `<tq-${attrValues.iconComponent.__name} ${attrStr}></tq-${attrValues.iconComponent.__name}>`
 }

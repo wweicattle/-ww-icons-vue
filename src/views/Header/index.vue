@@ -15,17 +15,18 @@
             <img src="@/assets/img/star.png" alt="" class="star" />
           </span>
         </template>
-        <span class="menu_item_css use_help" @mousemove="mouseHelpVis = true"
+        <span class="menu_item_css use_help" @click.stop="mouseHelpVis = !mouseHelpVis"
           >使用说明
-          <div class="help-text_css" v-if="mouseHelpVis" @click.stop="null" @mouseleave="mouseHelpVis = false">
+          <div class="help-text_css" v-if="mouseHelpVis" @click.stop="hideIconModal">
             <div class="install_">
               <img src="@/assets/img/begin.png" alt="" />
               <div class="install_code">
                 <div class="tit_css">安装</div>
                 <div class="context" v-html="compiledMarkdown"></div>
               </div>
-            </div></div
-        ></span>
+            </div>
+          </div>
+        </span>
       </div>
     </div>
     <span class="right_content align-item" @click="changeTheme" v-bind="theme.status">
@@ -43,20 +44,18 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import mdStr from './demo.md?raw'
 import { useTheme } from '@/store/theme'
 import { marked } from 'marked'
 import hljs from 'highlight.js'
 import { tabs, type TabItem } from './utils/tabMenu'
-// const hljs={}
-
+import { watchGlobalEvent } from '@/utils/globalEvent'
 import { useRouter, useRoute } from 'vue-router'
-const theme = useTheme()
 
+const theme = useTheme()
 const router = useRouter()
 const route = useRoute()
-
 const activeMenuIndex = ref<number>(0)
 
 // 移入变量
@@ -64,7 +63,7 @@ const mouseHelpVis = ref<boolean>(false)
 const changeTheme = () => {
   theme.editTheme()
 }
-
+// 对代码高亮设置
 var rendererMD = new marked.Renderer()
 marked.setOptions({
   renderer: rendererMD,
@@ -87,15 +86,22 @@ const changeIcons = (params: TabItem, index: number) => {
   activeMenuIndex.value = index
   if (params.path) router.push(params.path)
 }
+
+// 隐藏图标说明
+const hideIconModal = (event: Event) => {
+  console.log(event)
+}
+
+onMounted(() => {
+  // 对全局点击时间做判断
+  watchGlobalEvent(() => {
+    mouseHelpVis.value = false
+  })
+})
 watch(
   () => route.path,
   (newVal) => {
     console.log(newVal)
-    // 回流url上的菜单
-    // tabs.findIndex((res) => {
-    //   return res.path == newVal
-
-    // })
   },
   {
     immediate: true
@@ -149,12 +155,15 @@ watch(
         margin-right: 20px;
         position: relative;
         font-weight: 800;
+
         &.use_help {
           color: rgb(158, 160, 161);
+
           &:hover {
             cursor: pointer;
           }
         }
+
         .star {
           display: none;
           position: absolute;

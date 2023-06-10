@@ -61,3 +61,26 @@ input{
   --fontColor:#000
 }
 
+.toast-content{
+  position: fixed;
+  background: #fff;
+  width: 100px;
+  top:40px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px #00000014, 0 9px 28px 8px #0000000d;
+  /* pointer-events:all; */
+  padding: 6px 10px;
+  text-align: center;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  transition: all 1s ease;
+  
+}
+.toast-content .text{
+  padding-left: 6px;
+}

@@ -53,16 +53,14 @@ defineProps({
   background-color: #fff;
   background-position: 0 0, 10px 10px;
   background-size: 20px 20px;
-
-  & > img {
-    width: 70%;
-    height: 70%;
-    margin: auto;
+  svg {
+    width: 170px;
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 0;
     top: 0;
+    bottom: 0;
+    margin: auto;
   }
 }
 </style>

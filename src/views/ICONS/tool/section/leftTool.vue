@@ -33,7 +33,7 @@ interface toolOpe {
 
 const styleAttr = reactive<toolOpe>({
   color: '#1a1a1a',
-  width: undefined,
+  width: '',
   spin: false
 })
 

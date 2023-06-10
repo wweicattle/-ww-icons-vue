@@ -15,9 +15,9 @@ export default defineConfig({
     Components({
       resolvers: [
         (componentName) => {
-          if (componentName.startsWith('Tq'))
+          if (componentName.startsWith('tq'))
             return {
-              name: componentName.split('Tq')[1],
+              name: componentName.split('tq')[1],
               from: '@wwcattlewei/icons-vue'
             }
         }

@@ -2,24 +2,25 @@
   <div class="code_contain">
     <div class="text_header space-between">
       <span class="right-title">{{ iconAttr.iconComponent?.__name }}</span>
-      <span class="code_del" @click="emits('changeVis')"><Close width="20px" /></span>
+      <span class="code_del" @click.stop="emits('changeVis')">
+        <Close width="20px" />
+      </span>
     </div>
-    <div class="code_codes">
+    <div class="code_codes" @click="handleCopy">
       {{ codeStr }}
     </div>
     <div class="code_ope">
       <span>24px</span>
-      <span><Download width="18px" style="vertical-align: -4px" /><span class="png_txt">PNG</span></span>
+      <span> <Download width="18px" style="vertical-align: -4px" /><span class="png_txt">PNG</span> </span>
       <span @click="copySvgCode">SVG CODE</span>
     </div>
   </div>
 </template>
 
 <script setup>
-import { watch, computed, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useUserStore } from '@/store'
-import computeCodeName from './utils/computedCodeStr'
-// import { Close,Download} from "@wwcattlewei/icons-vue";
+import { toast } from '@/utils/toast'
 const store = useUserStore()
 
 const emits = defineEmits(['changeVis'])
@@ -32,16 +33,10 @@ const iconAttr = computed(() => {
 const codeStr = ref(``)
 
 //
-watch(
-  iconAttr.value,
-  (newVal) => {
-    // 计算出源码字符串
-    codeStr.value = computeCodeName(newVal)
-  },
-  {
-    immediate: true
-  }
-)
+const handleCopy = () => {
+  console.log('开始复制了')
+  toast('复制成功!')
+}
 </script>
 
 <style lang="less" scoped>
@@ -49,6 +44,7 @@ watch(
   padding: 0 20px;
   text-align: left;
   color: var(--fontColor);
+
   &:hover {
     cursor: pointer;
   }
@@ -86,11 +82,15 @@ watch(
     & > span {
       margin: 0 4px;
       border: 1px solid #eee;
-      padding: 10px 20px;
+      padding: 6px 15px;
       border-radius: 4px;
+      font-size: 12px;
+
       &:hover {
-        opacity: 0.6;
+        font-weight: 600;
+        color: var(--primary);
       }
+
       & .png_txt {
         margin-left: 6px;
       }
