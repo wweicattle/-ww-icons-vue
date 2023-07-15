@@ -8,6 +8,8 @@ import App from './main.vue'
 import { createPinia } from 'pinia'
 const app = createApp(App)
 app.use(WwIcons)
+console.log('测试本地能否提交~')
+
 app.use(createPinia())
 const update = async () => {
   await setupRouter(app)
