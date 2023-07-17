@@ -13,11 +13,11 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue'
+// import { onMounted } from 'vue'
 import leftTool from './section/leftTool.vue'
 import iconShow from './section/iconShow.vue'
 import rightCode from './section/rightCode.vue'
-import { watchGlobalEvent } from '@/utils/globalEvent'
+// import { watchGlobalEvent } from '@/utils/globalEvent'
 
 let emits = defineEmits(['update:visble'])
 //
@@ -33,19 +33,19 @@ const changeVis = () => {
   emits('update:visble', !props.visble)
 }
 
-onMounted(() => {
-  // 对全局点击时间做判断
-  watchGlobalEvent((e) => {
-    console.log(e)
-    console.log('全局关闭')
-    // emits('changeVis')
-    if (!props.visble) {
-      // emits('update:visble', true)
-    } else {
-      // emits('update:visble', false)
-    }
-  })
-})
+// onMounted(() => {
+//   // 对全局点击时间做判断
+//   watchGlobalEvent((e) => {
+//     console.log(e)
+//     console.log('全局关闭')
+//     // emits('changeVis')
+//     if (!props.visble) {
+//       // emits('update:visble', true)
+//     } else {
+//       // emits('update:visble', false)
+//     }
+//   })
+// })
 </script>
 
 <style lang="less" scoped>

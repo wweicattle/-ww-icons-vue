@@ -20,6 +20,7 @@ const selectIcon = reactive<Record<string, any>>({
   },
   iconComponent: null
 })
+// 图标详细信息显隐
 const iconShowVisbility = ref<boolean>(false)
 </script>
 

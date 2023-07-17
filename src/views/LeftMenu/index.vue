@@ -22,7 +22,7 @@ const activeMenuIndex = ref<number>(0)
 console.log(useIcons.iconData)
 const menuDom = ref<Array<HTMLDivElement> | any>([])
 nextTick(() => {
-  menuDom.value = Array.from(document.querySelectorAll('.items_css'))
+  menuDom.value = Array.from(document.querySelectorAll('.items-css'))
 })
 
 const editActiveMenuBtn = async (index: number) => {

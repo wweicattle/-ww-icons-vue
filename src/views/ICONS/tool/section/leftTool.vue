@@ -41,7 +41,7 @@ const changeColor = (event: HTMLInputElement | any) => {
   if (event.target) {
     styleAttr.color = event.target.value
     // 通知状态
-    store.editIcons(styleAttr)
+    store.editIcons({ color: styleAttr.color })
   }
 }
 const changeAttrBtn = (val: string) => {
@@ -53,7 +53,7 @@ const changeAttrBtn = (val: string) => {
       break
     case 'spin':
       styleAttr.spin = !styleAttr.spin
-      store.editIcons(styleAttr)
+      store.editIcons({ spin: styleAttr.spin })
       break
   }
 }
@@ -63,6 +63,7 @@ const changeAttrBtn = (val: string) => {
 .ope_tool {
   padding: 10px 0;
   color: #1a1a1a;
+
   .color_item {
     border: 1px solid rgb(228, 224, 224);
     width: 20px;

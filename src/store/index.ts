@@ -21,7 +21,6 @@ const dealSortIcons = () => {
 
   return sortIconsData
 }
-console.log(dealSortIcons())
 
 type IconType = 'line' | 'solid'
 interface UserState {
@@ -31,19 +30,7 @@ interface UserState {
   selectIconType: IconType
   lineNum: number
 }
-// const typeIconsNum = (val: Record<string, any>, type: IconType) => {
-//   let iconNums = 0
-//   iconNums += val.reduce((acc: number, val: Record<string, any>) => {
-//     if (val.type == type) {
-//       acc += 1
-//       return acc
-//     } else {
-//       return acc
-//     }
-//   }, 0)
-//   return iconNums
-//   // return useIcons.iconData.filter((val: any) => { return val.type == useIcons.selectIconType }).length || 0
-// }
+
 export const useUserStore = defineStore({
   id: 'user',
   state: (): UserState => ({
@@ -74,17 +61,12 @@ export const useUserStore = defineStore({
     resetIcon() {
       Object.assign(this.iconAttr, {
         color: '#1a1a1a',
+        width: '170px',
         spin: false
       })
     },
-    // setIconData(params: Record<string, any>) {
-    //   // Object.assign(this.iconData, { ...params })
-    //   // Object.assign(this.copyIconData, { ...params })
-    // },
     selectIconData(inputVal: string) {
       // 筛选的图标
-      console.log(this.copyIconData)
-
       const copyData = {
         ...this.copyIconData
       }
@@ -101,14 +83,6 @@ export const useUserStore = defineStore({
 
       this.iconData = copyData
       console.log(this.iconData)
-      // let nums: number = 0
-      // // 需要计算搜索出来的 分线性与实线 数目
-      // for (const key in copyData) {
-      //   console.log(copyData[key])
-      //   nums += typeIconsNum(copyData[key], this.selectIconType)
-      // }
-      // this.lineNum = nums
-      // console.log(nums);
     },
     changeIconType(val: IconType) {
       this.selectIconType = val

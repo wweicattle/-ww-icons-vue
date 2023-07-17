@@ -5,7 +5,7 @@
       v-if="Object.keys(iconAttr.iconComponent).length > 0"
       :key="Date.now()"
       :color="iconAttr.color"
-      :width="iconAttr.width"
+      :width="iconAttr.width || '170px'"
       :spin="iconAttr.spin"
     >
     </component>

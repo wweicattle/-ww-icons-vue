@@ -1,7 +1,7 @@
 <template>
   <div class="header-contain align-item">
     <div class="left_content space-between">
-      <div style="height: 100%; font-size: 16px; font-weight: 600">
+      <div class="home-icon">
         <img src="@/assets/img/logo.png" alt="" class="logo_" @click="router.push('/')" />
       </div>
       <div class="sort-content align-item">
@@ -109,6 +109,13 @@ watch(
 )
 </script>
 <style lang="less">
+.home-icon {
+  height: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .context {
   table {
     width: 100%;

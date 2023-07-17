@@ -1,14 +1,14 @@
 <template>
   <div>
     <template v-for="(val, index, num) in newIcons" :key="index">
-      <div class="items_css">
+      <div class="items-css">
         <div class="item_name align-item" @click="showDetailIcons(num)">
           {{ index }}
           {{ typeIconsNum(val) }}
-          <CaretBottom width="14px" v-if="!expandStatus[num]" />
+          <CaretBottom width="14px" v-if="expandStatus[num]" />
           <CaretTop width="14px" v-else />
         </div>
-        <div class="icons_content" v-show="expandStatus[num]">
+        <div class="icons_content" v-show="!expandStatus[num]">
           <template v-for="res in val" :key="res">
             <div
               class="icon_items align-item"
@@ -33,15 +33,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, toRaw, markRaw, onBeforeMount } from 'vue'
+import { ref, computed, markRaw } from 'vue'
 import { useModel } from '@/store/model'
 import { useUserStore } from '@/store/index'
 
 const useModels = useModel()
 const useIcons = useUserStore()
-console.log(toRaw(useIcons.iconData))
-
-console.log(111, toRaw(useIcons.iconData))
 const newIcons = computed(() => {
   return useIcons.iconData
 })
@@ -62,13 +59,10 @@ const typeIconsNum = (val: Record<string, any>) => {
     }
   }, 0)
   return iconNums
-  // return useIcons.iconData.filter((val: any) => { return val.type == useIcons.selectIconType }).length || 0
 }
-const expandStatus = ref<Array<any>>([])
+const expandStatus = ref<Array<boolean>>([])
 const emits = defineEmits(['update:visble', 'selecIcon'])
 
-// 处理图标分类
-// const sortIconsData = shallowRef<Record<string, any>>({})
 defineProps({
   visble: {
     type: Boolean,
@@ -87,14 +81,10 @@ const expandIconsDetail = (val: Record<string, any>) => {
 const showDetailIcons = (index: number) => {
   expandStatus.value[index] = !expandStatus.value[index]
 }
-
-onBeforeMount(() => {
-  // dealSortIcons()
-})
 </script>
 
 <style lang="less" scoped>
-.items_css {
+.items-css {
   user-select: none;
 
   .item_name {

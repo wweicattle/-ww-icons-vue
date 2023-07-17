@@ -5,11 +5,8 @@ export default function computeCodeName(storeAttrs: iconAttr) {
   const attrValues: iconAttr | any = {
     ...storeAttrs
   }
-  console.log(attrValues)
   const attAttrs = ['color', 'spin', 'width']
   let attrStr = ''
-
-  // const attArr=[{name:'color',value:color}]
   attAttrs.forEach((element) => {
     if (attrValues[element] && element === 'spin') {
       attrStr += ` spin `
@@ -19,5 +16,8 @@ export default function computeCodeName(storeAttrs: iconAttr) {
       attrStr += `${element}='${attrValues[element]}' `
     }
   })
-  return `<tq-${attrValues.iconComponent.__name} ${attrStr}></tq-${attrValues.iconComponent.__name}>`
+  if (!attrValues['width']) {
+    attrStr += `width='170px' `
+  }
+  return `<${attrValues.iconComponent.__name} ${attrStr}></${attrValues.iconComponent.__name}>`
 }
