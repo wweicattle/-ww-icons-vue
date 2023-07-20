@@ -12,7 +12,9 @@
     <div class="code-ope">
       <input type="text" v-model="iconSize" class="size-input-css" @input="changeIcon" />
       px
-      <span> <Download width="18px" style="vertical-align: -4px" /><span class="png_txt">PNG</span> </span>
+      <span @click="copySvgCode">
+        <Download width="18px" style="vertical-align: -4px" /><span class="png_txt">PNG</span>
+      </span>
       <span @click="copySvgCode">SVG CODE</span>
     </div>
   </div>
@@ -49,9 +51,12 @@ const changeIcon = () => {
 }
 const handleCopy = async () => {
   await toClipboard(codeStr.value)
-  toast('复制成功!')
+  toast('复制成功!', 'Success')
 }
 
+const copySvgCode = () => {
+  toast('还没开发,wait!!', 'Info')
+}
 const closeIcons = () => {
   store.resetIcon()
 }
@@ -114,12 +119,13 @@ const closeIcons = () => {
         margin-left: 6px;
       }
     }
+
     .size-input-css {
       width: 40px;
       border: 1px solid #eee;
       padding: 5px;
-      margin-right: 3px;
       border-radius: 2px;
+      text-align: center;
     }
   }
 }

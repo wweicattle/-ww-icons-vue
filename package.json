@@ -12,6 +12,7 @@
     "format": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\""
   },
   "dependencies": {
+    "@iconify/vue": "^4.1.1",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "@wwcattlewei/icons-vue": "^3.0.1",
     "esbuild-vue": "^1.2.2",

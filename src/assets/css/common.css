@@ -64,7 +64,8 @@ input{
 .toast-content{
   position: fixed;
   background: #fff;
-  width: 100px;
+  width: 140px;
+  min-width: 140px;
   top:40px;
   left: 0;
   right: 0;

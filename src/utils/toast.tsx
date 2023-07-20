@@ -1,13 +1,20 @@
-import { CircleCheck } from '@wwcattlewei/icons-vue'
+import { CircleCheck, SuccessFilled, InfoFilled } from '@wwcattlewei/icons-vue'
 import { createVNode, render } from 'vue'
 const body = document.body
-const toast = (content?: string) => {
+type TypeStatus = 'Success' | 'Info' | 'Error'
+const toast = (content?: string, type?: TypeStatus) => {
   // 我们先写一个弹窗组件
   const message = {
     render() {
       return (
         <div class="toast-content">
-          <CircleCheck color="#faad14" width="20"></CircleCheck>
+          {type === 'Success' ? (
+            <SuccessFilled color="#faad14" width="20" />
+          ) : type === 'Info' ? (
+            <InfoFilled color="#1a1a1a" width="20" />
+          ) : (
+            <CircleCheck color="red" width="20" />
+          )}
           <span class="text">{content}</span>
         </div>
       )
@@ -15,7 +22,6 @@ const toast = (content?: string) => {
   }
   // 初始化组件生成vdom
   const vm = createVNode(message)
-  console.log(vm)
 
   // 创建容器，也可以用已经存在的
   const container = document.createElement('div')
@@ -24,7 +30,7 @@ const toast = (content?: string) => {
   render(vm, container)
   // 弹窗挂到任何你想去的地方
   body.appendChild(container)
-  // 5s后取消提示
+  // 2s后取消提示
   setTimeout(() => {
     Array.from(body.children).find((res) => {
       console.log(res)

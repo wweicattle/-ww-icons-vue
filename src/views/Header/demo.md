@@ -16,7 +16,7 @@
 //main.ts
 import { createApp } from 'vue'
 import App from './App.vue'
-import { icons as Icons } from '@wwcattlewei/icons-vue'
+import Icons from '@wwcattlewei/icons-vue'
 //样式引入
 import '@wwcattlewei/icons-vue/dist/index.css'
 const app = createApp(App)
@@ -38,7 +38,7 @@ app.mount('#app')
 </script>
 ```
 
-### 自动引入
+<!-- ### 自动引入
 
 ```shell
   $ yarn add unplugin-vue-components
@@ -63,12 +63,12 @@ export default defineConfig({
     })
   ]
 })
-```
+``` -->
 
 ## 参数
 
 | 参数          | 说明                                                                                          | 类型               | 默认值     |
 | ------------- | --------------------------------------------------------------------------------------------- | ------------------ | ---------- |
-| color          | 颜色                                    | _string_           | `default`  |
-| size          | 尺寸                                                       | _number_           | `normal`   |
+| color          | 颜色                                    | _string_           | `default(#1a1a1a)`  |
+| width          | 尺寸                                                       | _string_           | `170px`   |
 | spin          | 旋转动画                                                                                     | _boolean_           | false          |
