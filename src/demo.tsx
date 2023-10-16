@@ -11,7 +11,7 @@ export default defineComponent({
     return () => (
       <div>
         <span>我是box4341</span>
-        <div classNmae="active" style={{ color: 'red' }} onClick={() => clickBox()}>
+        <div style={{ color: 'red' }} onClick={() => clickBox()}>
           <span>我是box2</span>
           <div>我是box3</div>
         </div>
