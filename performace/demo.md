@@ -5,15 +5,24 @@
 
 ### 那么对于性能,我们到底应该知道些什么!!!
 换句话说 用户关注的是页面,针对页面,可以分为
-
   ### 1.页面加载性能
+  构建之前 无用代码Vite rollup tree-shaking 功能 
+  分包机制 全局 组件 npm 包,mf 动态升级 
+  遵循用到 prefetch 资源优先级 lazyload 
+  interSectionObserver
+  dns的地址 djn link 
+---
+  React Fiber 渲染过程的暂停和恢复! messageChannel 使用
+  
+
+
+
   #### 1.1首屏慢,白屏时间长,怎么请求还在一直在loading中!
    肉眼只能看到快与不快,具体的指标数据,我们还是需要一些工具来帮助我们查验,使用 Chrome devtools 内置的 Lighthouse 来查看各个性能指标.
 先说说各个指标!
 
 长话短说
 LCP: 最大内容绘制(衡量了最大的内容出现在屏幕上需要多长时间。这可以是图像或文本块)
-
 
 FCP: 呈现第一段 DOM 内容所花费的时间
 
